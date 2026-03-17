@@ -73,16 +73,20 @@ These constraints restrict the search space and filter candidates that are struc
 
 In the codebase the two configurations correspond to:
 
-pure  → SVR (Semantic Vector Retrieval)
-graph → OCR (Ontology-Constrained Retrieval)
+In the codebase the two configurations correspond to:
+
+- `pure` → SVR (Semantic Vector Retrieval)
+- `graph` → OCR (Ontology-Constrained Retrieval)
 
 Semantic vector retrieval (SVR):
 
-python run_vector_graph.py --mode pure --q "Chi ha occupazione storico?"
+Semantic vector retrieval (SVR):
+
+python run_vector_graph.py --mode pure --q "Who has occupation historian?"
 
 Ontology-constrained retrieval (OCR):
 
-python run_vector_graph.py --mode graph --q "Chi ha studiato a Padova e ha ricoperto la carica di imperatore?"
+python run_vector_graph.py --mode graph --q "Who studied in Padua and held the position of emperor?"
 
 ## Requirements
 
