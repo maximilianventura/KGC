@@ -25,7 +25,7 @@ Unlike document-based RAG systems, this work operates on **atomic factual statem
 ├── README.md                 # Repository documentation
 ├── LICENSE                   # Open-source license
 └── queries/                  
-    └── extract_people_1400_1700.sparql  # Contains the SPARQL query used for the initial extraction of historical entities from Wikidata
+    └── extract_people_1400_1700.sparql  #  SPARQL query for initial data extraction from Wikidata
 ```
 
 ## Experimental Setup
