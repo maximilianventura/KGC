@@ -1,3 +1,4 @@
+
 # Ontology-Constrained Retrieval for Historical RAG
 
 Code accompanying the paper:
@@ -6,28 +7,36 @@ Code accompanying the paper:
 
 ## Overview
 
-This repository contains the experimental code used to compare two retrieval architectures:
+This repository contains the experimental code used to compare two retrieval architectures for historical fact retrieval:
 
-1. Semantic Vector Retrieval (SVR)
-2. Ontology-Constrained Retrieval (OCR)
+1. **Semantic Vector Retrieval (SVR)**
+2. **Ontology-Constrained Retrieval (OCR)**
 
-The goal is to evaluate how structural constraints derived from Wikidata relations can reduce semantic noise in fact retrieval.
+The goal of the experiment is to evaluate how structural constraints derived from Wikidata relations can reduce semantic noise during vector retrieval.
 
-Unlike document-based RAG systems, this work operates on **atomic factual statements** extracted from Wikidata and represented as vector embeddings.
+Unlike document-based RAG systems, this work operates on **atomic factual statements** derived from Wikidata and represented as vector embeddings.
 
 ## Repository Structure
 
 core_vector_graph.py  
-Core retrieval logic.
-
 run_vector_graph.py  
-Script used to run the experimental configurations and reproduce the experiments.
-
 requirements.txt  
-List of Python dependencies required to run the experiments.
-
+README.md  
 LICENSE  
-Open source license for the code.
+queries/  
+    extract_people_1400_1700.sparql
+
+**core_vector_graph.py**  
+Core retrieval logic used in the experiments.
+
+**run_vector_graph.py**  
+Script used to run the experimental configurations and reproduce the experiments described in the paper.
+
+**requirements.txt**  
+List of Python dependencies required to run the code.
+
+**queries/**  
+Contains the SPARQL query used for the initial extraction of historical entities from Wikidata.
 
 ## Experimental Setup
 
@@ -35,13 +44,13 @@ The experiments operate on a dataset derived from Wikidata consisting of approxi
 
 Each statement is represented as a structured record containing:
 
-- source entity (SRC)
-- relation (PID – Wikidata Property ID)
-- destination entity (DST)
-- optional temporal metadata
-- natural language linearization of the fact
+- SRC – source entity (person, place, institution)
+- PID – relation (Wikidata Property ID)
+- DST – destination entity
+- temporal metadata – optional start/end dates
+- text representation – linearized natural language form of the fact
 
-The statements are embedded using the model:
+Embeddings are generated using:
 
 sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
 
@@ -51,11 +60,11 @@ and indexed in the **Qdrant vector database**.
 
 Two configurations are evaluated.
 
-**SVR – Semantic Vector Retrieval**
+### SVR – Semantic Vector Retrieval
 
 Standard vector similarity search based purely on semantic proximity between query and statement embeddings.
 
-**OCR – Ontology-Constrained Retrieval**
+### OCR – Ontology-Constrained Retrieval
 
 Vector retrieval combined with structural constraints derived from Wikidata relations and temporal metadata.  
 These constraints restrict the search space and filter candidates that are structurally incompatible with the query.
@@ -87,15 +96,18 @@ Main dependencies include:
 
 ## Dataset Reconstruction
 
-The dataset is **not distributed directly** because it is derived from Wikidata.
+The dataset used in the experiments is derived from Wikidata and is **not distributed directly**.
 
-To reconstruct the dataset:
+The initial extraction query is provided in the `queries/` directory.
 
-1. Extract entities and relations from Wikidata using SPARQL queries.
-2. Convert statements into flat factual records containing SRC, PID, DST and temporal metadata.
-3. Generate text linearizations of the facts.
-4. Compute embeddings using SentenceTransformers.
-5. Index the embeddings in Qdrant.
+The final corpus used in the experiments was obtained through a controlled preprocessing pipeline including:
+
+1. extraction of historical persons from Wikidata
+2. relation extraction and normalization
+3. statement linearization
+4. temporal metadata consolidation
+5. embedding generation
+6. indexing in Qdrant
 
 This process produces the experimental corpus of approximately **191,000 factual statements** used in the paper.
 
@@ -103,5 +115,6 @@ This process produces the experimental corpus of approximately **191,000 factual
 
 This repository supports a **methodological experiment** on retrieval control in historical fact retrieval.
 
-The goal is to study how structural constraints can reduce semantic noise before generation.  
-It is not intended to provide a production-ready search system.
+The goal is to study how structural constraints derived from knowledge graph relations can reduce semantic noise before generation.
+
+The code is intended to reproduce the experiments described in the paper and is **not designed as a production search system**.
