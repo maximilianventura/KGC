@@ -1,1 +1,19 @@
+La query utilizzata è la seguente:
+SELECT ?person ?birth ?death WHERE {
+  ?person wdt:P31 wd:Q5 .
+  ?person p:P569 ?bSt .
+  ?bSt psv:P569 ?bV .
+  ?bV wikibase:timeValue ?birth ;
+      wikibase:timePrecision ?bPrec .
+  FILTER(?birth >= "1400-01-01T00:00:00Z"^^xsd:dateTime &&
+         ?birth <  "1700-01-01T00:00:00Z"^^xsd:dateTime)
+  FILTER(?bPrec >= 11)
+  ?person p:P570 ?dSt .
+  ?dSt psv:P570 ?dV .
+  ?dV wikibase:timeValue ?death ;
+      wikibase:timePrecision ?dPrec .
+  FILTER(?dPrec >= 11)
+}
+LIMIT 20000
+OFFSET 80000
 
