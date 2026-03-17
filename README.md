@@ -73,8 +73,6 @@ These constraints restrict the search space and filter candidates that are struc
 
 In the codebase the two configurations correspond to:
 
-In the codebase the two configurations correspond to:
-
 - `pure` → SVR (Semantic Vector Retrieval)
 - `graph` → OCR (Ontology-Constrained Retrieval)
 
