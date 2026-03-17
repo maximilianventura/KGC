@@ -16,6 +16,20 @@ The goal of the experiment is to evaluate how structural constraints derived fro
 
 Unlike document-based RAG systems, this work operates on **atomic factual statements** derived from Wikidata and represented as vector embeddings.
 
+## 📂 Repository Structure
+
+```text
+├── core_vector_graph.py      # Core retrieval logic used in the experiments
+├── run_vector_graph.py       # Script used to run the experimental configurations
+├── requirements.txt          # List of Python dependencies
+├── README.md                 # Repository documentation
+├── LICENSE                   # Open-source license
+└── queries/                  
+    └── extract_people_1400_1700.sparql  # SPARQL query for initial data extraction
+
+
+
+
 ## Repository Structure
 
 core_vector_graph.py  
