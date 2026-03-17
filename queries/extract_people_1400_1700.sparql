@@ -1,4 +1,3 @@
-La query utilizzata è la seguente:
 SELECT ?person ?birth ?death WHERE {
   ?person wdt:P31 wd:Q5 .
   ?person p:P569 ?bSt .
@@ -15,5 +14,5 @@ SELECT ?person ?birth ?death WHERE {
   FILTER(?dPrec >= 11)
 }
 LIMIT 20000
-OFFSET 80000
+OFFSET 0
 
