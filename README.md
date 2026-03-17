@@ -71,13 +71,18 @@ These constraints restrict the search space and filter candidates that are struc
 
 ## Example Usage
 
-Example semantic retrieval:
+In the codebase the two configurations correspond to:
 
-python run_vector_graph.py --mode svr --q "Chi è nato a Milano nel 1489?"
+pure  → SVR (Semantic Vector Retrieval)
+graph → OCR (Ontology-Constrained Retrieval)
 
-Example ontology-constrained retrieval:
+Semantic vector retrieval (SVR):
 
-python run_vector_graph.py --mode ocr --q "Chi è nato a Milano nel 1489?"
+python run_vector_graph.py --mode pure --q "Chi ha occupazione storico?"
+
+Ontology-constrained retrieval (OCR):
+
+python run_vector_graph.py --mode graph --q "Chi ha studiato a Padova e ha ricoperto la carica di imperatore?"
 
 ## Requirements
 
