@@ -5,6 +5,8 @@ Code accompanying the paper: https
 
 **Reducing Semantic Noise in Historical RAG through Knowledge-Graph Constraints**
 
+[Paper PDF link here]
+
 ## Overview
 
 This repository contains the experimental code used to compare two retrieval architectures for historical fact retrieval:
