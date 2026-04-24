@@ -5,7 +5,7 @@ Code accompanying the paper:
 
 **Reducing Semantic Noise in Historical RAG through Knowledge-Graph Constraints**
 
-[https://doi.org/10.5281/zenodo.19724591]
+https://doi.org/10.5281/zenodo.19724591
 
 ## Overview
 
