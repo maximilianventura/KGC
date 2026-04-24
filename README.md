@@ -1,7 +1,7 @@
 
 # Knowledge-Graph Constrained Retrieval
 
-Code accompanying the paper:
+Code accompanying the preprint:
 
 **Reducing Semantic Noise in Historical RAG through Knowledge-Graph Constraints**
 
